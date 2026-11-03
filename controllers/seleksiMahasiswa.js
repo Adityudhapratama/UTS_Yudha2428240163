@@ -1,4 +1,4 @@
-const podcastModel = require('../models/beasiswa');
+const beasiswaModel = require('../models/beasiswa');
 const { errorHttp } = require('../middlewares/errorHandler');
 
 // Memeriksa apakah nilai kosong (undefined, null, atau string kosong)
@@ -18,14 +18,13 @@ function validasiPodcast({ judul, host, kategori, jumlahEpisode }) {
     jumlahEpisode !== undefined &&
     (typeof jumlahEpisode !== 'number' || jumlahEpisode < 0)
   ) {
-    return 'jumlahEpisode harus berupa angka yang valid';
+    return 'jumlahSeleksi harus berupa angka yang valid';
   }
 
   return null;
 }
 
-// Menyusun data podcast dari body (field opsional hanya ikut jika dikirim)
-function susunDataPodcast({ judul, host, kategori, jumlahEpisode, bahasa }) {
+function susunDataSeleksi({ judul, host, kategori, jumlahEpisode, bahasa }) {
   const data = {
     judul: judul.trim(),
     host: host.trim(),
@@ -38,76 +37,71 @@ function susunDataPodcast({ judul, host, kategori, jumlahEpisode, bahasa }) {
   return data;
 }
 
-// GET /podcasts
-// Menampilkan seluruh data podcast, bisa difilter dengan ?kategori=
+
 exports.getAll = (req, res) => {
   const { kategori } = req.query;
-  res.status(200).json(podcastModel.getAll(kategori));
+  res.status(200).json(beasiswaModel.getAll(kategori));
 };
 
-// GET /podcasts/:id
-// Menampilkan satu podcast berdasarkan ID
+
 exports.getById = (req, res, next) => {
   const id = Number(req.params.id);
-  const podcast = podcastModel.getById(id);
+  const podcast = beasiswaModel.getById(id);
 
-  if (!podcast) return next(errorHttp(404, 'Data podcast tidak ditemukan'));
+  if (!podcast) return next(errorHttp(404, 'Data beasiswa tidak ditemukan'));
 
   res.status(200).json(podcast);
 };
 
-// POST /podcasts
-// Menambahkan data podcast baru
+
 exports.create = (req, res, next) => {
   const body = req.body || {};
 
   const pesanError = validasiPodcast(body);
   if (pesanError) return next(errorHttp(400, pesanError));
 
-  const podcastBaru = podcastModel.create(susunDataPodcast(body));
+  const beasiswaBaru = beasiswaModel.create(susunDataPodcast(body));
 
   res.status(201).json({
     status: 'success',
-    message: 'Podcast berhasil ditambahkan',
-    data: podcastBaru,
+    message: 'beasiswa berhasil ditambahkan',
+    data: beasiswaBaru,
   });
 };
 
-// PUT /podcasts/:id
-// Mengubah seluruh data podcast
+
 exports.update = (req, res, next) => {
   const id = Number(req.params.id);
   const body = req.body || {};
 
-  if (!podcastModel.getById(id)) {
-    return next(errorHttp(404, 'Data podcast tidak ditemukan'));
+  if (!beasiswaModel.getById(id)) {
+    return next(errorHttp(404, 'Data beasiswa tidak ditemukan'));
   }
 
   const pesanError = validasiPodcast(body);
   if (pesanError) return next(errorHttp(400, pesanError));
 
-  const podcastDiubah = podcastModel.update(id, susunDataPodcast(body));
+  const beasiswaDiubah = beasiswaModel.update(id, susunDataPodcast(body));
 
   res.status(200).json({
     status: 'success',
-    message: 'Podcast berhasil diperbarui',
-    data: podcastDiubah,
+    message: 'beasiswa berhasil diperbarui',
+    data: beasiswaDiubah,
   });
 };
 
-// DELETE /podcasts/:id
-// Menghapus data podcast berdasarkan ID
+
 exports.remove = (req, res, next) => {
   const id = Number(req.params.id);
-  const podcastDihapus = podcastModel.remove(id);
+  const beasiswaDihapus = beasiswaModel.remove(id);
 
-  if (!podcastDihapus) {
-    return next(errorHttp(404, 'Data podcast tidak ditemukan'));
+  if (!beasiswaDihapus) {
+    return next(errorHttp(404, 'Data beasiswa tidak ditemukan'));
   }
 
   res.status(200).json({
     status: 'success',
-    message: 'Podcast berhasil dihapus',
+    message: 'daftar beasiswa berhasil dihapus',
     data: podcastDihapus,
   });
 };

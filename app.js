@@ -6,7 +6,7 @@ const cors = require('cors');
 const logger = require('./middlewares/logger');
 const { notFoundHandler, errorHandler } = require('./middlewares/errorHandler');
 
-const podcastRoutes = require('./routes/podcastRoutes');
+const beasiswaRoutes = require('./routes/podcastRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,21 +24,21 @@ app.get('/', (req, res) => {
   res.json({
     nama: 'Adit Yudha Pratama',
     npm: '2428240163',
-    topik: 37,
-    resource: '/podcasts',
+    topik: 38,
+    resource: '/Seleksi Beasiswa',
     endpoints: {
-      getAll: 'GET /podcasts',
-      getById: 'GET /podcasts/:id',
-      create: 'POST /podcasts',
-      update: 'PUT /podcasts/:id',
-      delete: 'DELETE /podcasts/:id',
-      filter: 'GET /podcasts?kategori=pendidikan',
+      getAll: 'GET /Seleksi Beasiswas',
+      getById: 'GET /Seleksi Beasiswa/:id',
+      create: 'POST /Seleksi Beasiswa',
+      update: 'PUT /Seleksi Beasiswa/:id',
+      delete: 'DELETE /Seleksi Beasiswa/:id',
+      filter: 'GET /pendaftar?status=lolos',
     },
   });
 });
 
 // ---------- Route per modul ----------
-app.use('/podcasts', podcastRoutes);
+app.use('/Seleksi Beasiswa', beasiswaRoutes);
 
 // ---------- Handler 404 dan error handler (paling bawah) ----------
 app.use(notFoundHandler);

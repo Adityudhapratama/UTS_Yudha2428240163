@@ -2,9 +2,9 @@
 let podcasts = [
   {
     id: 1,
-    judul: 'Ngobrol Koding',
-    host: 'Dimas Aditya',
-    kategori: 'pendidikan',
+    noPendaftaran: 'BSW-001',
+    nama: 'Dimas Aditya',
+    ipk: '',
     jumlahEpisode: 48,
     bahasa: 'Indonesia',
   },
@@ -27,41 +27,41 @@ let podcasts = [
 ];
 let nextId = 4;
 
-// Menampilkan seluruh podcast, bisa difilter berdasarkan kategori
+// Menampilkan seluruh daftar mahasiswaa, bisa difilter berdasarkan kategori
 function getAll(kategori) {
   if (kategori) {
-    return podcasts.filter(
+    return beasiswa.filter(
       (p) => p.kategori.toLowerCase() === kategori.toLowerCase()
     );
   }
-  return podcasts;
+  return beasiswa;
 }
 
 // Menampilkan satu podcast berdasarkan ID
 function getById(id) {
-  return podcasts.find((p) => p.id === id);
+  return beasiswa.find((p) => p.id === id);
 }
 
 // Menambahkan podcast baru
 function create(data) {
   const baru = { id: nextId++, ...data };
-  podcasts.push(baru);
+  beasiswa.push(baru);
   return baru;
 }
 
 // Mengganti seluruh data podcast (PUT), id tetap dipertahankan
 function update(id, data) {
-  const index = podcasts.findIndex((p) => p.id === id);
+  const index = beasiswa.findIndex((p) => p.id === id);
   if (index === -1) return null;
-  podcasts[index] = { id, ...data };
-  return podcasts[index];
+  beasiswa[index] = { id, ...data };
+  return beasiswa[index];
 }
 
 // Menghapus podcast berdasarkan ID, mengembalikan data yang dihapus
 function remove(id) {
-  const index = podcasts.findIndex((p) => p.id === id);
+  const index = beasiswa.findIndex((p) => p.id === id);
   if (index === -1) return null;
-  const [dihapus] = podcasts.splice(index, 1);
+  const [dihapus] = beasiswa.splice(index, 1);
   return dihapus;
 }
 
