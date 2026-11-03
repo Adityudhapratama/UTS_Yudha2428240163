@@ -6,7 +6,7 @@ const cors = require('cors');
 const logger = require('./middlewares/logger');
 const { notFoundHandler, errorHandler } = require('./middlewares/errorHandler');
 
-const beasiswaRoutes = require('./routes/podcastRoutes');
+const beasiswaRoutes = require('./routes/beasiswaRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;

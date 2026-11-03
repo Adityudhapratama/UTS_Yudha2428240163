@@ -3,26 +3,26 @@ let podcasts = [
   {
     id: 1,
     noPendaftaran: 'BSW-001',
-    nama: 'Dimas Aditya',
-    ipk: '',
-    jumlahEpisode: 48,
-    bahasa: 'Indonesia',
+    nama: 'Yudha',
+    ipk: '3.70',
+    status: 'Verifikasi',
+    beasiswaId: 'BSW-24',
   },
   {
     id: 2,
-    judul: 'Cerita Teknologi',
-    host: 'Raka Pratama',
-    kategori: 'teknologi',
-    jumlahEpisode: 32,
-    bahasa: 'Indonesia',
+    noPendaftaran: 'BSW-002',
+    nama: 'akang',
+    ipk: '4.00',
+    status: 'Verifikasi',
+    beasiswaId: 'BSW-67',
   },
   {
     id: 3,
-    judul: 'Belajar Bareng',
-    host: 'Sinta Maharani',
-    kategori: 'pendidikan',
-    jumlahEpisode: 25,
-    bahasa: 'Indonesia',
+    noPendaftaran: 'BSW-003',
+    nama: 'ikbal',
+    ipk: '4.00',
+    status: 'Verifikasi',
+    beasiswaId: 'BSW-53',
   },
 ];
 let nextId = 4;
@@ -37,7 +37,6 @@ function getAll(kategori) {
   return beasiswa;
 }
 
-// Menampilkan satu podcast berdasarkan ID
 function getById(id) {
   return beasiswa.find((p) => p.id === id);
 }
@@ -49,7 +48,6 @@ function create(data) {
   return baru;
 }
 
-// Mengganti seluruh data podcast (PUT), id tetap dipertahankan
 function update(id, data) {
   const index = beasiswa.findIndex((p) => p.id === id);
   if (index === -1) return null;
@@ -57,7 +55,6 @@ function update(id, data) {
   return beasiswa[index];
 }
 
-// Menghapus podcast berdasarkan ID, mengembalikan data yang dihapus
 function remove(id) {
   const index = beasiswa.findIndex((p) => p.id === id);
   if (index === -1) return null;
