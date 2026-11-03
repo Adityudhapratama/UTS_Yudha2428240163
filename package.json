@@ -1,17 +1,25 @@
 {
-  "name": "uts_yudha2428240163",
+  "name": "tugas1-restful-2428240163",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "RESTful API Seleksi Mahasiswa - Seleksi Mahasiswa SI5C",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
+  "keywords": [
+    "restful-api",
+    "express",
+    "podcast",
+    "si5c"
+  ],
+  "author": "Adit Yudha Pratama",
+  "license": "ISC",
   "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.6",
-    "dotenv": "^18.0.9",
-    "express": "^5.3.0"
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
